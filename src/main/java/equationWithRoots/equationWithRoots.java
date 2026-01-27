@@ -17,38 +17,50 @@ public class equationWithRoots
         }
 
 
-        if ((a == 0 && Math.sqrt(b) == c) || (a == 0 && b == 0 && c == 0))
+        if(a == 0)
         {
-            return "MANY SOLUTIONS";
+            if (b == c * c)
+            {
+                return "MANY SOLUTIONS";
+            }
+            else
+            {
+                return "NO SOLUTION";
+            }
         }
 
-
-        if (c == 0)
+        else
         {
-            for(int x = -100; x < 101; x++)
+            if (c == 0)
             {
-                if(a * x == -b)
+                if(((double)-b / (double)a) % 1 == 0)
                 {
-                    result.append(x).append("\n");
+                    result.append(-b / a).append("\n");
                     return result.toString();
                 }
             }
+
+            if (b == 0)
+            {
+                if(((double)c*c / (double)a) % 1 == 0)
+                {
+                    result.append(c*c / a);
+                    return result.toString();
+                }
+            }
+
+            if(((c * c - (double)b) / a) % 1 == 0)
+            {
+                result.append((c * c - b) / a);
+            }
         }
 
-        for(int x = -10000; x < 100001; x++)
+
+
+        if (result.isEmpty())
         {
-            if (a * x + b < 0)
-            {
-                continue;
-            }
-
-            if (a * x + b == Math.pow(c, 2))
-            {
-                result.append(x).append("\n");
-                return result.toString();
-            }
+            return "NO SOLUTION";
         }
-
         return result.toString();
     }
 }
