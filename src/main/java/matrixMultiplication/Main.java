@@ -56,21 +56,25 @@ public class Main
             }
         }
 
-        outputTranspondedMatrix(n, k, matrixC);
+        writer.write(outputTranspondedMatrix(n, k, matrixC));
 
         reader.close();
         writer.close();
     }
 
-    public static void outputTranspondedMatrix(int n, int k, int[][] matrix)
+    public static String outputTranspondedMatrix(int n, int k, int[][] matrix)
     {
+        StringBuilder sb = new StringBuilder();
+
         for(int i = 0; i < k; i++)
         {
             for(int j = 0; j < n; j++)
             {
-                System.out.print(matrix[j][i] + " ");
+                sb.append(matrix[j][i]).append(" ");
             }
-            System.out.print("\n");
+            sb.append("\n");
         }
+
+        return sb.toString();
     }
 }
