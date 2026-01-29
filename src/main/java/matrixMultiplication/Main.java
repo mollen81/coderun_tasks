@@ -68,9 +68,9 @@ public class Main
         {
             for(int j = 0; j < n; j++)
             {
-                System.out.println(matrix[j][i] + " ");
+                System.out.print(matrix[j][i] + " ");
             }
-            System.out.println("\n");
+            System.out.print("\n");
         }
     }
 }
