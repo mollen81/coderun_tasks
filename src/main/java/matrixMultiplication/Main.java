@@ -51,7 +51,7 @@ public class Main
             {
                 for(int c = 0; c < k; c++)
                 {
-                    matrixC[i][c] = matrixA[i][j] * matrixB[j][c];
+                    matrixC[i][c] += matrixA[i][j] * matrixB[j][c];
                 }
             }
         }
@@ -66,7 +66,21 @@ public class Main
             System.out.println("\n");
         }
 
+
+
         reader.close();
         writer.close();
+    }
+
+    public void outputTranspondedMatrix(int n, int k, int[][] matrix)
+    {
+        for(int i = 0; i < k; i++)
+        {
+            for(int j = 0; j < n; j++)
+            {
+                System.out.println(matrix[j][i] + " ");
+            }
+            System.out.println("\n");
+        }
     }
 }
