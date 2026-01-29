@@ -56,23 +56,13 @@ public class Main
             }
         }
 
-
-        for(int i = 0; i < n; i++)
-        {
-            for(int j = 0; j < k; j++)
-            {
-                System.out.println(matrixC[i][j] + " ");
-            }
-            System.out.println("\n");
-        }
-
-
+        outputTranspondedMatrix(n, k, matrixC);
 
         reader.close();
         writer.close();
     }
 
-    public void outputTranspondedMatrix(int n, int k, int[][] matrix)
+    public static void outputTranspondedMatrix(int n, int k, int[][] matrix)
     {
         for(int i = 0; i < k; i++)
         {
