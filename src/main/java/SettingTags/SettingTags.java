@@ -13,6 +13,23 @@ public class SettingTags
         int n = Integer.parseInt(reader.readLine());
         writer.write(String.valueOf(n));
         */
+        int[] tags = new int[Integer.parseInt(reader.readLine())];
+
+        tags[0] = 1;
+        tags[1] = 1;
+
+        for(int i = 2; i < tags.length; i++)
+        {
+            tags[i] = tags[i - 1] + tags[i - 2];
+        }
+
+        int sum = 2;
+        for(int i = 2; i < tags.length; i++)
+        {
+            sum += tags[i];
+        }
+
+        writer.write(Integer.toString(sum));
 
         reader.close();
         writer.close();
