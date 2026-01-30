@@ -13,7 +13,22 @@ public class SettingTags
         int n = Integer.parseInt(reader.readLine());
         writer.write(String.valueOf(n));
         */
-        int[] tags = new int[Integer.parseInt(reader.readLine())];
+        int input = Integer.parseInt(reader.readLine());
+
+        writer.write(Integer.toString(calculate(input)));
+
+        reader.close();
+        writer.close();
+    }
+
+    public static int calculate(int input)
+    {
+        if(input == 1)
+        {
+            return 1;
+        }
+
+        int[] tags = new int[input];
 
         tags[0] = 1;
         tags[1] = 1;
@@ -29,9 +44,6 @@ public class SettingTags
             sum += tags[i];
         }
 
-        writer.write(Integer.toString(sum));
-
-        reader.close();
-        writer.close();
+        return sum;
     }
 }
