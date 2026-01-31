@@ -29,7 +29,7 @@ public class Main
 
         int nod = findNod(a1, a2);
 
-        writer.write(nod + " " + (a1 * a2) / nod);
+        writer.write(nod + " " + ((long) a1 * a2) / nod);
 
         
 
@@ -39,9 +39,9 @@ public class Main
 
     public static int findNod(int a1, int a2)
     {
-        for(int i = 1; i < a1 / 2; i++)
+        for(int i = 1; i < a1; i++)
         {
-            if(a1 % ((double) a1 / i) == 0 && a2 % ((double) a1 / i) == 0)
+            if(a1 % (a1 / i) == 0 && a2 % (a1 / i) == 0)
             {
                 return a1 / i;
             }
