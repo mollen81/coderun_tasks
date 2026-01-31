@@ -35,7 +35,14 @@ public class Main
         }
 
 
-        writer.write(Integer.toString(targetValue - diff));
+        if(targetValue < 0)
+        {
+            writer.write(Integer.toString(-(Math.abs(targetValue) - diff)));
+        }
+        else
+        {
+            writer.write(Integer.toString(targetValue - diff));
+        }
 
         reader.close();
         writer.close();
