@@ -19,18 +19,23 @@ public class Main
         }
 
         int targetValue = Integer.parseInt(reader.readLine());
-        int result = n;
+        int diff = n + 1;
 
         for(int i = 0; i < n; i++)
         {
-            if(Math.abs(targetValue - array[i]) <= result)
+            int currentDiff = Math.abs(targetValue - array[i]);
+            if(currentDiff < diff)
             {
-                result = array[i];
+                diff = currentDiff;
+            }
+            if(diff == 0)
+            {
+                break;
             }
         }
 
 
-        writer.write(Integer.toString(result));
+        writer.write(Integer.toString(targetValue - diff));
 
         reader.close();
         writer.close();
