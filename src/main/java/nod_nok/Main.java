@@ -31,7 +31,7 @@ public class Main
 
         writer.write(nod + " " + ((long) a1 * a2) / nod);
 
-        
+
 
         reader.close();
         writer.close();
@@ -39,14 +39,12 @@ public class Main
 
     public static int findNod(int a1, int a2)
     {
-        for(int i = 1; i < a1; i++)
+        while(a2 != 0)
         {
-            if(a1 % (a1 / i) == 0 && a2 % (a1 / i) == 0)
-            {
-                return a1 / i;
-            }
+            int tmp = a2;
+            a2 = a1 % a2;
+            a1 = tmp;
         }
-
-        return 1;
+        return a1;
     }
 }
