@@ -19,7 +19,7 @@ public class Main
         }
 
         int targetValue = Integer.parseInt(reader.readLine());
-        int diff = n + 1;
+        int diff = 1001;
 
         for(int i = 0; i < n; i++)
         {
