@@ -17,6 +17,8 @@ public class Main
                 .map(Integer::parseInt)
                 .toList());
 
+        List<Integer> extendedList = new ArrayList<>();
+
         if(n == 1)
         {
             writer.write("0");
@@ -55,6 +57,7 @@ public class Main
                     for (int i = middleIndex - 1; i > -1; i--)
                     {
                         numbers.add(numbers.get(i));
+                        extendedList.add(numbers.get(i));
                     }
                 }
                 else
@@ -62,6 +65,7 @@ public class Main
                     for (int i = n - 1 - middleIndex; i > -1; i--)
                     {
                         numbers.add(i);
+                        extendedList.add(numbers.get(i));
                     }
                 }
             }
@@ -72,6 +76,7 @@ public class Main
                     for (int i = leftIndex - 1; i > - 1; i--)
                     {
                         numbers.add(numbers.get(i));
+                        extendedList.add(numbers.get(i));
                     }
                 }
                 else
@@ -79,12 +84,13 @@ public class Main
                     for (int i = n - 1 - leftIndex; i > -1; i--)
                     {
                         numbers.add(numbers.get(i));
+                        extendedList.add(numbers.get(i));
                     }
                 }
             }
         }
 
-
+        writer.write(extendedList.size() + "\n" + extendedList.toString());
 
         reader.close();
         writer.close();
