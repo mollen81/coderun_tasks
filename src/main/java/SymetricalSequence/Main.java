@@ -96,15 +96,15 @@ public class Main
         writer.close();
     }
 
-    public static boolean isPalindrome(@NotNull List<Integer> list, int n)
+    public static boolean isPalindrome(@NotNull List<Integer> list)
     {
-        if(n % 2 == 0)
+        if(list.size() % 2 == 0)
         {
-            return list.subList(0, n / 2).equals(list.subList(n / 2, n).reversed());
+            return list.subList(0, list.size() / 2).equals(list.subList(list.size() / 2, list.size()).reversed());
         }
         else
         {
-            return list.subList(0, n / 2).equals(list.subList(n / 2 + 1, n).reversed());
+            return list.subList(0, list.size() / 2).equals(list.subList(list.size() / 2 + 1, list.size()).reversed());
         }
     }
 }
