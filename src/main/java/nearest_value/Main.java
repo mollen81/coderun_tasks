@@ -19,14 +19,17 @@ public class Main
         }
 
         int targetValue = Integer.parseInt(reader.readLine());
-        int diff = 1001;
+        int nearestValue = array[0];
+        int diff = 2002;
 
         for(int i = 0; i < n; i++)
         {
-            int currentDiff = Math.abs(targetValue - array[i]);
+            int currentDiff = Math.abs(array[i] - targetValue);
+
             if(currentDiff < diff)
             {
                 diff = currentDiff;
+                nearestValue = array[i];
             }
             if(diff == 0)
             {
@@ -35,14 +38,7 @@ public class Main
         }
 
 
-        if(targetValue < 0)
-        {
-            writer.write(Integer.toString(-(Math.abs(targetValue) - diff)));
-        }
-        else
-        {
-            writer.write(Integer.toString(targetValue - diff));
-        }
+        writer.write(Integer.toString(nearestValue));
 
         reader.close();
         writer.close();
