@@ -16,11 +16,24 @@ public class Main
                 .map(Integer::parseInt)
                 .toList();
 
-
-        while(!isPalindrome(numbers, n))
+        if(n == 1)
+        {
+            writer.write("0");
+        }
+        else if(n == 2)
+        {
+            writer.write("1" + Integer.toString(numbers.getFirst()));
+        }
+        else if(n == 3)
+        {
+            writer.write("2" + numbers.get(n - 2) + numbers.getFirst());
+        }
+        else
         {
 
+
         }
+
 
 
         reader.close();
