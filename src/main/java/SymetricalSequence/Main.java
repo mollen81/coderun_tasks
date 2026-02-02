@@ -34,7 +34,7 @@ public class Main
                 }
             }
 
-            System.out.println(palindromeStartIndex);
+            writer.write(palindromeStartIndex + "\n");
 
             StringBuilder sb = new StringBuilder();
             for(int i = palindromeStartIndex - 1; i > -1; i--)
@@ -42,7 +42,7 @@ public class Main
                 sb.append(numbers.get(i).toString()).append(" ");
             }
 
-            System.out.println((sb.toString()));
+            writer.write((sb.toString()).trim());
         }
 
         reader.close();
