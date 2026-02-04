@@ -14,14 +14,16 @@ public class Main {
 
         Collections.sort(list);
 
-        if(list.getLast() * list.get(list.size() - 2) * list.get(list.size() - 3)
+        int n = list.size();
+
+        if(list.getLast() * list.get(n - 2) * list.get(n - 3)
                 < list.getFirst() * list.get(1) * list.getLast())
         {
             writer.write(list.getFirst() + " " + list.get(1) + " " + list.getLast());
         }
         else
         {
-            writer.write(list.getLast() + " " + list.get(list.size() - 2) + " " + list.get(list.size() - 3));
+            writer.write(list.getLast() + " " + list.get(n - 2) + " " + list.get(n - 3));
         }
 
 
