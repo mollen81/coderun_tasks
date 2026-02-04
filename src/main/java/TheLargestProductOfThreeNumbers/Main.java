@@ -56,7 +56,7 @@ public class Main {
         int min1 = minValues.poll(); // smallest value
         int min2 = minValues.poll();
 
-        if(max1 * max2 * max3 > min1 * min2 * max3)
+        if((long) max1 * max2 * max3 > (long) min1 * min2 * max3)
         {
             return List.of(max1, max2, max3);
         }
