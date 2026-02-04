@@ -2,6 +2,7 @@ package TheLargestProductOfThreeNumbers;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -12,22 +13,58 @@ public class Main {
                 .map(Integer::parseInt)
                 .toList());
 
-        Collections.sort(list);
-
-        int n = list.size();
-
-        if(list.getLast() * list.get(n - 2) * list.get(n - 3)
-                < list.getFirst() * list.get(1) * list.getLast())
-        {
-            writer.write(list.getFirst() + " " + list.get(1) + " " + list.getLast());
-        }
-        else
-        {
-            writer.write(list.getLast() + " " + list.get(n - 2) + " " + list.get(n - 3));
-        }
-
+        writer.write(getMultipliers(list).stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(" ")));
 
         reader.close();
         writer.close();
     }
+
+    public static List<Integer> getMultipliers(List<Integer> array)
+    {
+        PriorityQueue<Integer> maxValues = new PriorityQueue<>();
+        PriorityQueue<Integer> minValues = new PriorityQueue<>(2, Comparator.reverseOrder());
+
+        for(Integer value : array)
+        {
+            if(maxValues.size() < 3)
+            {
+                maxValues.offer(value);
+            }
+            else if(value > maxValues.peek())
+            {
+                maxValues.poll();
+                maxValues.offer(value);
+            }
+
+            if(minValues.size() < 2)
+            {
+                minValues.offer(value);
+            }
+            else if(value < minValues.peek())
+            {
+                minValues.poll();
+                minValues.offer(value);
+            }
+        }
+
+        int max1 = maxValues.poll();
+        int max2 = maxValues.poll();
+        int max3 = maxValues.poll(); // largest value
+
+        int min1 = minValues.poll(); // smallest value
+        int min2 = minValues.poll();
+
+        if(max1 * max2 * max3 > min1 * min2 * max3)
+        {
+            return List.of(max1, max2, max3);
+        }
+        else
+        {
+            return List.of(min1, min2, max3);
+        }
+
+    }
+
 }
