@@ -21,9 +21,9 @@ public class Main {
         writer.close();
     }
 
-    public static List<Integer> getMultipliers(List<Integer> array)
+    public static List<Integer> getMultipliers(List<Integer> array) throws NullPointerException
     {
-        PriorityQueue<Integer> maxValues = new PriorityQueue<>();
+        PriorityQueue<Integer> maxValues = new PriorityQueue<>(3);
         PriorityQueue<Integer> minValues = new PriorityQueue<>(2, Comparator.reverseOrder());
 
         for(Integer value : array)
