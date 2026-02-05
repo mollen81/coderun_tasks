@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Main
 {
@@ -17,43 +18,46 @@ public class Main
                 .map(Integer::parseInt)
                 .toList());
 
-        List<Integer> extendedList = new ArrayList<>();
-
-
-        if(isPalindrome(numbers))
+        if(isPalindrome(numbers, 0, n - 1))
         {
             writer.write("0");
         }
         else
         {
-            int left = 0;
-            int right = numbers.size() - 1;
-
-            while(!numbers.subList(right, numbers.size() - 1).reversed()
-                    .equals(numbers.subList(0, right)))
+            int palindromeStartIndex = 0;
+            for(int i = 0; i < n; i ++)
             {
-                numbers.add(numbers.get(right - 1 - left));
-                left++;
+                if(isPalindrome(numbers, i, n - 1))
+                {
+                    palindromeStartIndex = i;
+                    break;
+                }
             }
 
-            writer.write(numbers.size() - n + "\n" + numbers.subList(numbers.size() - n - 1, numbers.size() - 1));
+            writer.write(palindromeStartIndex + "\n");
+
+            StringBuilder sb = new StringBuilder();
+            for(int i = palindromeStartIndex - 1; i > -1; i--)
+            {
+                sb.append(numbers.get(i).toString()).append(" ");
+            }
+
+            writer.write((sb.toString()).trim());
         }
-
-
 
         reader.close();
         writer.close();
     }
 
-    public static boolean isPalindrome(@NotNull List<Integer> list)
+    public static boolean isPalindrome(@NotNull List<Integer> list, int start, int end)
     {
-        if(list.size() % 2 == 0)
+        while(start < end)
         {
-            return list.subList(0, list.size() / 2).equals(list.subList(list.size() / 2, list.size()).reversed());
+            if(!Objects.equals(list.get(start), list.get(end))) return false;
+            start++;
+            end--;
         }
-        else
-        {
-            return list.subList(0, list.size() / 2).equals(list.subList(list.size() / 2 + 1, list.size()).reversed());
-        }
+
+        return true;
     }
 }
