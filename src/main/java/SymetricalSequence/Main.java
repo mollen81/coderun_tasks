@@ -19,78 +19,27 @@ public class Main
 
         List<Integer> extendedList = new ArrayList<>();
 
-        if(n == 1)
+
+        if(isPalindrome(numbers))
         {
             writer.write("0");
         }
-        else if(n == 2)
-        {
-            writer.write("1" + Integer.toString(numbers.getFirst()));
-        }
-        else if(n == 3)
-        {
-            writer.write("2" + numbers.get(n - 2) + numbers.getFirst());
-        }
         else
         {
-            int middleIndex = 0;
-            int leftIndex = 0;
-            for(int i = 1; i < n - 3; i++)
+            int left = 0;
+            int right = numbers.size() - 1;
+
+            while(!numbers.subList(right, numbers.size() - 1).reversed()
+                    .equals(numbers.subList(0, right)))
             {
-                if(numbers.get(i - 1).equals(numbers.get(i + 3))
-                        && numbers.get(i).equals(numbers.get(i + 2)) )
-                {
-                    middleIndex = i + 1;
-                }
-                else if(numbers.get(i - 1).equals(numbers.get(i + 2))
-                        && numbers.get(i).equals(numbers.get(i + 1)))
-                {
-                    leftIndex = i;
-                }
+                numbers.add(numbers.get(right - 1 - left));
+                left++;
             }
 
-
-            if(middleIndex != 0)
-            {
-                if(n - 1 == middleIndex)
-                {
-                    for (int i = middleIndex - 1; i > -1; i--)
-                    {
-                        numbers.add(numbers.get(i));
-                        extendedList.add(numbers.get(i));
-                    }
-                }
-                else
-                {
-                    for (int i = n - 1 - middleIndex; i > -1; i--)
-                    {
-                        numbers.add(i);
-                        extendedList.add(numbers.get(i));
-                    }
-                }
-            }
-            if(leftIndex != 0)
-            {
-                if(n - 1 == leftIndex)
-                {
-                    for (int i = leftIndex - 1; i > - 1; i--)
-                    {
-                        numbers.add(numbers.get(i));
-                        extendedList.add(numbers.get(i));
-                    }
-                }
-                else
-                {
-                    for (int i = n - 1 - leftIndex; i > -1; i--)
-                    {
-                        numbers.add(numbers.get(i));
-                        extendedList.add(numbers.get(i));
-                    }
-                }
-            }
+            writer.write(numbers.size() - n + "\n" + numbers.subList(numbers.size() - n - 1, numbers.size() - 1));
         }
 
-        writer.write(extendedList.size() + "\n" + extendedList.toString());
+
 
         reader.close();
         writer.close();
