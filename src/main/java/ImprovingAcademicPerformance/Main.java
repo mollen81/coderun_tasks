@@ -15,9 +15,12 @@ public class Main
         double score = (2 * a + 3 * b + 4 * c) / ((double) a + b + c);
         double diff = 4.0 - score;
 
-        Double count = Math.ceil(diff*(a  + b + c) / (5 - diff));
+        long count = (long) Math.ceil(diff*(a  + b + c) / (5 - diff));
+        if(count < 0) {
+            count = 0;
+        }
 
-        writer.write(String.valueOf(count.longValue()));
+        writer.write(String.valueOf(count));
 
         reader.close();
         writer.close();
