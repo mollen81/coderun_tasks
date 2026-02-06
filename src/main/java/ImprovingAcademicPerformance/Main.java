@@ -8,7 +8,16 @@ public class Main
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 
+        long a = Long.parseLong(reader.readLine().trim());
+        long b = Long.parseLong(reader.readLine().trim());
+        long c = Long.parseLong(reader.readLine().trim());
 
+        double score = (2 * a + 3 * b + 4 * c) / ((double) a + b + c);
+        double diff = 4.0 - score;
+
+        Double count = Math.ceil(diff*(a  + b + c) / (5 - diff));
+
+        writer.write(String.valueOf(count.longValue()));
 
         reader.close();
         writer.close();
