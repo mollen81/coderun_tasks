@@ -1,9 +1,7 @@
 package TheMinesweeper;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Main
 {
@@ -23,14 +21,14 @@ public class Main
             }
         }
 
-        Map<int[], String> bombsMap = new HashMap<>(k);
+        List<List<Integer>> bombsMap = new ArrayList<>(k);
 
         for(int i = 0; i < k; i++)
         {
             String[] line = reader.readLine().split(" ");
             int p = Integer.parseInt(line[0]);
             int q = Integer.parseInt(line[1]);
-            bombsMap.put(new int[]{p - 1, q - 1}, "*");
+            bombsMap.add(List.of(p - 1, q - 1));
 
             addFieldsValues(field, n, m, p, q);
         }
@@ -41,7 +39,7 @@ public class Main
             StringBuilder line = new StringBuilder();
             for(int j = 0; j < m; j++)
             {
-                if(bombsMap.containsKey(new int[]{i,j})){
+                if(bombsMap.contains(List.of(i, j))){
                     line.append("* ");
                 }
                 else{
