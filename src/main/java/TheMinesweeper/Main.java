@@ -30,7 +30,7 @@ public class Main
             int q = Integer.parseInt(line[1]);
             bombsMap.add(List.of(p - 1, q - 1));
 
-            addFieldsValues(field, n, m, p, q);
+            addFieldValues(field, n, m, p, q);
         }
 
         StringBuilder stringField = new StringBuilder();
@@ -59,11 +59,11 @@ public class Main
         writer.close();
     }
 
-    public static void addFieldsValues(String[][] field, int n, int m, int p, int q)
+    public static void addFieldValues(String[][] field, int n, int m, int p, int q)
     {
-        if(p - 1 == 0)
+        if(p == 1)
         {
-            if(q - 1 == 0) {
+            if(q == 1) {
                 for(int i = 0; i < 2; i++) {
                     for(int j = 0; j < 2; j++){
                         field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
@@ -88,7 +88,7 @@ public class Main
         }
         else if(p == n)
         {
-            if(q - 1 == 0){
+            if(q == 1){
                 for(int i = p-2; i < p; i++){
                     for(int j = 0; j < 2; j++) {
                         field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
@@ -110,7 +110,7 @@ public class Main
                 }
             }
         }
-        else if(q - 1 == 0)
+        else if(q == 1)
         {
             for(int i = p-2; i < p+1; i++){
                 for(int j = 0; j < 2; j++){
