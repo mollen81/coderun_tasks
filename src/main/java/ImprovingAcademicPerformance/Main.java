@@ -12,10 +12,8 @@ public class Main
         long b = Long.parseLong(reader.readLine().trim());
         long c = Long.parseLong(reader.readLine().trim());
 
-        double score = (2 * a + 3 * b + 4 * c) / ((double) a + b + c);
-        double diff = 4.0 - score;
+        long count = (long) Math.ceil(a + (double) b/3 - (double) c/3);
 
-        long count = (long) Math.ceil(diff*(a  + b + c) / (5 - diff));
         if(count < 0) {
             count = 0;
         }
