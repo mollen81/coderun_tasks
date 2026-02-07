@@ -1,6 +1,7 @@
 package TheMinesweeper;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +16,12 @@ public class Main
         int m = Integer.parseInt(input[1]);
         int k = Integer.parseInt(input[2]);
 
-        int[][] field = new int[n][m];
+        String[][] field = new String[n][m];
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                field[i][j] = "0";
+            }
+        }
 
         Map<int[], String> bombsMap = new HashMap<>(k);
 
@@ -29,26 +35,47 @@ public class Main
             addFieldsValues(field, n, m, p, q);
         }
 
+        StringBuilder stringField = new StringBuilder();
+        for(int i = 0; i < n; i++)
+        {
+            StringBuilder line = new StringBuilder();
+            for(int j = 0; j < m; j++)
+            {
+                if(bombsMap.containsKey(new int[]{i,j})){
+                    line.append("* ");
+                }
+                else{
+                    line.append(field[i][j]).append(" ");
+                }
 
+                if(j == m-1){
+                    line.append("\n");
+                }
+            }
+            stringField.append(line);
+        }
+
+
+        writer.write(stringField.toString());
         reader.close();
         writer.close();
     }
 
-    public static void addFieldsValues(int[][] field, int n, int m, int p, int q)
+    public static void addFieldsValues(String[][] field, int n, int m, int p, int q)
     {
         if(p - 1 == 0)
         {
             if(q - 1 == 0) {
                 for(int i = 0; i < 2; i++) {
                     for(int j = 0; j < 2; j++){
-                        field[i][j] += 1;
+                        field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                     }
                 }
             }
             else if(q == m) {
                 for(int i = 0; i < 2; i++) {
                     for(int j = q - 2; j < q; j++){
-                        field[i][j] += 1;
+                        field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                     }
                 }
             }
@@ -56,7 +83,7 @@ public class Main
             {
                 for(int i = 0; i < 2; i++){
                     for(int j = q - 2; j < q + 1; j++){
-                        field[i][j] += 1;
+                        field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                     }
                 }
             }
@@ -66,21 +93,21 @@ public class Main
             if(q - 1 == 0){
                 for(int i = p-2; i < p; i++){
                     for(int j = 0; j < 2; j++) {
-                        field[i][j] += 1;
+                        field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                     }
                 }
             }
             else if(q == m){
                 for(int i = p-2; i < p; i++){
                     for(int j = q-2; j < q; j++) {
-                        field[i][j] += 1;
+                        field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                     }
                 }
             }
             else{
                 for(int i = p-2; i < p; i++){
                     for(int j = q-2; j < q+1; j++){
-                        field[i][j] += 1;
+                        field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                     }
                 }
             }
@@ -89,7 +116,7 @@ public class Main
         {
             for(int i = p-2; i < p+1; i++){
                 for(int j = 0; j < 2; j++){
-                    field[i][j] += 1;
+                    field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                 }
             }
         }
@@ -97,7 +124,7 @@ public class Main
         {
             for(int i = p-2; i < p+1; i++){
                 for(int j = q-2; j < q; j++){
-                    field[i][j] += 1;
+                    field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                 }
             }
         }
@@ -106,7 +133,7 @@ public class Main
             for(int i = p-2; i < p+1; i++){
                 for(int j = q-2; j < q+1; j++)
                 {
-                    field[i][j] += 1;
+                    field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                 }
             }
         }
