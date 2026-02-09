@@ -64,14 +64,14 @@ public class Main
         if(p == 1)
         {
             if(q == 1) {
-                for(int i = 0; i < 2; i++) {
-                    for(int j = 0; j < 2; j++){
+                for(int i = 0; i < p; i++) {
+                    for(int j = 0; j < q; j++){
                         field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                     }
                 }
             }
             else if(q == m) {
-                for(int i = 0; i < 2; i++) {
+                for(int i = 0; i < p; i++) {
                     for(int j = q - 2; j < q; j++){
                         field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                     }
@@ -79,7 +79,7 @@ public class Main
             }
             else
             {
-                for(int i = 0; i < 2; i++){
+                for(int i = 0; i < p; i++){
                     for(int j = q - 2; j < q + 1; j++){
                         field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                     }
@@ -90,7 +90,7 @@ public class Main
         {
             if(q == 1){
                 for(int i = p-2; i < p; i++){
-                    for(int j = 0; j < 2; j++) {
+                    for(int j = 0; j < q; j++) {
                         field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                     }
                 }
@@ -113,7 +113,7 @@ public class Main
         else if(q == 1)
         {
             for(int i = p-2; i < p+1; i++){
-                for(int j = 0; j < 2; j++){
+                for(int j = 0; j < q; j++){
                     field[i][j] = String.valueOf(Integer.parseInt(field[i][j]) + 1);
                 }
             }
