@@ -18,7 +18,9 @@ public class Main {
                 .map(Integer::parseInt)
                 .toList();
 
-
+        for(int i = 0; i < n - k + 1; i++){
+            
+        }
 
         reader.close();
         writer.close();
