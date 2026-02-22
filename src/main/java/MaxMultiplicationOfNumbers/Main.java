@@ -29,13 +29,16 @@ public class Main {
             }
 
             if(array.get(i) < maxNegative[0] || array.get(i) < maxNegative[1]) {
-                if (maxNegative[0] == 0) maxNegative[0] = array.get(i);
-                else if (maxNegative[1] == 0) maxNegative[1] = array.get(i);
-
-                else {
-                    if (array.get(i) < maxNegative[0]) maxNegative[0] = array.get(i);
-                    else maxNegative[1] = array.get(i);
+                if (maxNegative[0] == 0) {
+                    maxNegative[0] = array.get(i);
+                    sort(maxNegative);
                 }
+                else if (maxNegative[1] == 0) {
+                    maxNegative[1] = array.get(i);
+                    sort(maxNegative);
+                }
+
+
             }
         }
 
@@ -43,10 +46,10 @@ public class Main {
         sort(maxPositive);
 
         if(maxPositive[0] * maxPositive[1] > maxNegative[0] * maxNegative[1]) {
-            writer.write(String.valueOf(maxPositive[0] + " " + maxPositive[1]));
+            writer.write(maxPositive[0] + " " + maxPositive[1]);
         }
         else {
-            writer.write(String.valueOf(maxNegative[0] + " " + maxNegative[1]));
+            writer.write(maxNegative[0] + " " + maxNegative[1]);
         }
 
         reader.close();
