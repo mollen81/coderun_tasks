@@ -61,7 +61,7 @@ public class Main {
         sort(maxNegative);
         sort(maxPositive);
 
-        if(maxPositive[0] * maxPositive[1] > maxNegative[0] * maxNegative[1]) {
+        if((long) maxPositive[0] * maxPositive[1] > (long) maxNegative[0] * maxNegative[1]) {
             writer.write(maxPositive[0] + " " + maxPositive[1]);
         }
         else {
