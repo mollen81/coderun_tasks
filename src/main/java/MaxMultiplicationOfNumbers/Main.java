@@ -41,10 +41,10 @@ public class Main {
 
 
         if(maxPositive[0] * maxPositive[1] > maxNegative[0] * maxNegative[1]) {
-            writer.write(String.valueOf(maxPositive[0] * maxPositive[1]));
+            writer.write(String.valueOf(maxPositive[0] + " " + maxPositive[1]));
         }
         else {
-            writer.write(String.valueOf(maxNegative[0] * maxNegative[1]));
+            writer.write(String.valueOf(maxNegative[0] + " " + maxNegative[1]));
         }
 
         reader.close();
