@@ -14,6 +14,8 @@ public class Main {
 
         Deque<Integer> deque = new ArrayDeque<>();
 
+        
+
         List<Integer> numbers = Arrays.stream(reader.readLine().split(" "))
                 .map(Integer::parseInt)
                 .toList();
