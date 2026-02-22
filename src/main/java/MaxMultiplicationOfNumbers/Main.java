@@ -34,11 +34,13 @@ public class Main {
 
                 else {
                     if (array.get(i) < maxNegative[0]) maxNegative[0] = array.get(i);
-                    else maxPositive[1] = array.get(i);
+                    else maxNegative[1] = array.get(i);
                 }
             }
         }
 
+        sort(maxNegative);
+        sort(maxPositive);
 
         if(maxPositive[0] * maxPositive[1] > maxNegative[0] * maxNegative[1]) {
             writer.write(String.valueOf(maxPositive[0] + " " + maxPositive[1]));
@@ -49,5 +51,15 @@ public class Main {
 
         reader.close();
         writer.close();
+    }
+
+
+    static void sort(int[] nums)
+    {
+        if (nums[0] > nums[1]) {
+            int temp = nums[1];
+            nums[1] = nums[0];
+            nums[0] = temp;
+        }
     }
 }
