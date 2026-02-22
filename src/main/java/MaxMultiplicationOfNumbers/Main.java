@@ -19,12 +19,21 @@ public class Main {
         for(int i = 0; i < array.size(); i++)
         {
             if(array.get(i) > maxPositive[0] || array.get(i) > maxPositive[1]) {
-                if (maxPositive[0] == 0) maxPositive[0] = array.get(i);
-                else if (maxPositive[1] == 0) maxPositive[1] = array.get(i);
+                if (maxPositive[0] == 0) {
+                    maxPositive[0] = array.get(i);
+                    sort(maxPositive);
+                }
+                else if (maxPositive[1] == 0) {
+                    maxPositive[1] = array.get(i);
+                    sort(maxPositive);
+                }
 
                 else  {
-                    if (array.get(i) > maxPositive[0]) maxPositive[0] = array.get(i);
-                    else maxPositive[1] = array.get(i);
+                    if (array.get(i) > maxPositive[1]) {
+                        maxPositive[0] = array.get(i);
+                        sort(maxPositive);
+                    }
+                    else if (array.get(i) > maxPositive[0]) maxPositive[0] = array.get(i);
                 }
             }
 
@@ -38,6 +47,13 @@ public class Main {
                     sort(maxNegative);
                 }
 
+                else {
+                    if (array.get(i) < maxNegative[0]) {
+                        maxNegative[1] = array.get(i);
+                        sort(maxNegative);
+                    }
+                    else if (array.get(i) < maxNegative[1]) maxNegative[1] = array.get(i);
+                }
 
             }
         }
