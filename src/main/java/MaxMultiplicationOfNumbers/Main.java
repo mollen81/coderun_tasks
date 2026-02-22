@@ -19,19 +19,22 @@ public class Main {
         for(int i = 0; i < array.size(); i++)
         {
             if(array.get(i) > maxPositive[0] || array.get(i) > maxPositive[1]) {
-                if(array.get(i) > maxPositive[0]) {
-                    maxPositive[0] = array.get(i);
-                }
-                else {
-                    maxPositive[1] = array.get(i);
+                if (maxPositive[0] == 0) maxPositive[0] = array.get(i);
+                else if (maxPositive[1] == 0) maxPositive[1] = array.get(i);
+
+                else  {
+                    if (array.get(i) > maxPositive[0]) maxPositive[0] = array.get(i);
+                    else maxPositive[1] = array.get(i);
                 }
             }
-            if(array.get(i) < maxNegative[0] || array.get(i) < maxNegative[1]){
-                if(array.get(i) < maxNegative[0]) {
-                    maxNegative[0] = array.get(i);
-                }
+
+            if(array.get(i) < maxNegative[0] || array.get(i) < maxNegative[1]) {
+                if (maxNegative[0] == 0) maxNegative[0] = array.get(i);
+                else if (maxNegative[1] == 0) maxNegative[1] = array.get(i);
+
                 else {
-                    maxNegative[1] = array.get(i);
+                    if (array.get(i) < maxNegative[0]) maxNegative[0] = array.get(i);
+                    else maxPositive[1] = array.get(i);
                 }
             }
         }
