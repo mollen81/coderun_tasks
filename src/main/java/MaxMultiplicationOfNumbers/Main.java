@@ -3,6 +3,7 @@ package MaxMultiplicationOfNumbers;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -11,7 +12,7 @@ public class Main {
 
         List<Integer> array = Arrays.stream(reader.readLine().split(" "))
                 .map(Integer::parseInt)
-                .toList();
+                .collect(Collectors.toList());
 
         int[] maxPositive = new int[] {0, 0};
         int[] maxNegative = new int[] {0, 0};
@@ -61,11 +62,15 @@ public class Main {
         sort(maxNegative);
         sort(maxPositive);
 
-        if((long) maxPositive[0] * maxPositive[1] > (long) maxNegative[0] * maxNegative[1]) {
-            writer.write(maxPositive[0] + " " + maxPositive[1]);
+        if(array.size() == 2) {
+            writer.write(maxNegative[0] + " " + maxPositive[1]);
         }
         else {
-            writer.write(maxNegative[0] + " " + maxNegative[1]);
+            if ((long) maxPositive[0] * maxPositive[1] > (long) maxNegative[0] * maxNegative[1]) {
+                writer.write(maxPositive[0] + " " + maxPositive[1]);
+            } else {
+                writer.write(maxNegative[0] + " " + maxNegative[1]);
+            }
         }
 
         reader.close();
@@ -79,6 +84,15 @@ public class Main {
             int temp = nums[1];
             nums[1] = nums[0];
             nums[0] = temp;
+        }
+    }
+
+    static void sort(List<Integer> nums)
+    {
+        if(nums.get(0) > nums.get(1)) {
+            int temp = nums.get(1);
+            nums.removeFirst();
+            nums.add(temp);
         }
     }
 }
