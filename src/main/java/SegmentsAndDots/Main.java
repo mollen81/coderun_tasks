@@ -29,7 +29,7 @@ public class Main {
 
 
         for(int i = 0; i < m; i++) {
-            for (int j = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
                 if (Integer.parseInt(dotsLine[i]) >= Math.min(segments[j][0], segments[j][1])
                         && Integer.parseInt(dotsLine[i]) <= Math.max(segments[j][0], segments[j][1])) {
                     dots.replace(Integer.parseInt(dotsLine[i]), dots.get(Integer.parseInt(dotsLine[i])) + 1);
