@@ -28,19 +28,17 @@ public class Main {
         }
 
 
-        dots.forEach((key, value) -> {
-            for(int i = 0; i < n; i++) {
-                if(key >= Math.min(segments[i][0], segments[i][1])
-                        && key <= Math.max(segments[i][0], segments[i][1])) {
-                    dots.replace(key, dots.get(key) + 1);
+        for(int i = 0; i < m; i++) {
+            for (int j = 0; i < n; i++) {
+                if (Integer.parseInt(dotsLine[i]) >= Math.min(segments[j][0], segments[j][1])
+                        && Integer.parseInt(dotsLine[i]) <= Math.max(segments[j][0], segments[j][1])) {
+                    dots.replace(Integer.parseInt(dotsLine[i]), dots.get(Integer.parseInt(dotsLine[i])) + 1);
                 }
             }
 
-        });
-
-        for(int i = 0; i < m; i++) {
             writer.write(dots.get(Integer.parseInt(dotsLine[i])) + " ");
         }
+
 
 
         reader.close();
