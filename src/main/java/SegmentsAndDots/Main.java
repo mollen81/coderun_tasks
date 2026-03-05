@@ -66,11 +66,10 @@ public class Main {
                 }
                 sb.append(dotResult).append(" ");
             }
-
-            writer.write(sb.toString());
-
-            reader.close();
-            writer.close();
         }
+        writer.write(sb.toString());
+
+        reader.close();
+        writer.close();
     }
 }
